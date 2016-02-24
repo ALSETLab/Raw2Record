@@ -28,7 +28,7 @@ class Record():
         file = open(self.workdir + r'/%s_Voltages.mo' % (self.caseName), 'w')
         file.write('record %s_voltages\n   extends Modelica.Icons.Record;\n' % (self.caseName))
         for key in self.buses.keys():
-            file.write('\\\\ Bus number %s\n' % (key))
+            file.write('// Bus number %s\n' % (key))
             file.write('   parameter Real V%s = %f; \n' % (key, self.buses[key]['voltage']))
             file.write('   parameter Real A%s = %f; \n' % (key, self.buses[key]['angle']))
         file.write(r'end %s_voltages;' % (self.caseName))
@@ -38,7 +38,7 @@ class Record():
         file = open(self.workdir + r'/%s_Machines.mo' % (self.caseName), 'w')
         file.write('record %s_machines\n   extends Modelica.Icons.Record;\n' % (self.caseName))
         for machine in self.machines.keys():
-            file.write('\\\\ Machine %s\n' % (machine))
+            file.write('// Machine %s\n' % (machine))
             file.write('   parameter Real P%s = %f; \n' % (machine, self.machines[machine]['P']))
             file.write('   parameter Real Q%s = %f; \n' % (machine, self.machines[machine]['Q']))
         file.write(r'end %s_machines;' % (self.caseName))
@@ -48,7 +48,7 @@ class Record():
         file = open(self.workdir + r'/%s_Loads.mo' % (self.caseName), 'w')
         file.write('record %s_loads\n   extends Modelica.Icons.Record;\n' % (self.caseName))
         for load in self.loads.keys():
-            file.write('\\\\ Load %s\n' % (load))
+            file.write('// Load %s\n' % (load))
             file.write('   parameter Real PL%s = %f; \n' % (load, self.loads[load]['P']))
             file.write('   parameter Real QL%s = %f; \n' % (load, self.loads[load]['Q']))
         file.write(r'end %s_loads;' % (self.caseName))
@@ -56,9 +56,9 @@ class Record():
 
     def writeTrafos(self):
         file = open(self.workdir + r'/%s_Trafos.mo' % (self.caseName), 'w')
-        file.write('record %s_loads\n   extends Modelica.Icons.Record;\n' % (self.caseName))
+        file.write('record %s_trafos\n   extends Modelica.Icons.Record;\n' % (self.caseName))
         for trafo in self.trafos.keys():
-            file.write('\\\\ 2WindingTrafo %s\n' % (trafo))
+            file.write('// 2WindingTrafo %s\n' % (trafo))
             file.write('   parameter Real t1_%s = %f; \n' % (trafo, self.trafos[trafo]['t1']))
             file.write('   parameter Real t2_%s = %f; \n' % (trafo, self.trafos[trafo]['t2']))
         file.write(r'end %s_loads;' % (self.caseName))
