@@ -61,5 +61,5 @@ class Record():
             file.write('// 2WindingTrafo %s\n' % (trafo))
             file.write('   parameter Real t1_%s = %f; \n' % (trafo, self.trafos[trafo]['t1']))
             file.write('   parameter Real t2_%s = %f; \n' % (trafo, self.trafos[trafo]['t2']))
-        file.write(r'end %s_loads;' % (self.caseName))
+        file.write(r'end %s_trafos;' % (self.caseName))
         file.close()

@@ -213,12 +213,8 @@ class Reader():
         k = 0
         self.trafos = {}
         for fromBus in self.twoWTrafoFrom:
-            if (self.twoWTrafoWind1 == fromBus):
-                t1 = self.twoWTrafoRatio1[k]
-                t2 = self.twoWTrafoRatio2[k]
-            else:
-                t1 = self.twoWTrafoRatio2[k]
-                t2 = self.twoWTrafoRatio1[k]
+            t1 = self.twoWTrafoRatio1[k]
+            t2 = self.twoWTrafoRatio2[k]
             self.trafos[(str(fromBus)+'_' +
                         str(self.twoWTrafoTo[k]))] = {'fromBus': fromBus, 'toBus': self.twoWTrafoTo[k],
                                                       't1': t1, 't2': t2}
